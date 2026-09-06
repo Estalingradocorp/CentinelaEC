@@ -1,21 +1,21 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <title>Centinela BETA — Inicio</title>
 <style>
   :root {
-    --accent:#00ff99; --accent-cyan:#00d9ff; --bg:#04060b;
-    --card:#0a0f18; --line:rgba(0,255,153,.16); --muted:#7f9a8b; --danger:#ff4d5e;
+    --accent:#2ea6ff; --accent-cyan:#00b4ff; --bg:#04060b;
+    --card:#0a0f18; --line:rgba(46,166,255,.16); --muted:#7f9abf; --danger:#ff4d5e;
   }
   * { box-sizing:border-box; margin:0; padding:0; }
   html,body { height:100%; }
   body {
     background:
       radial-gradient(1200px 600px at 80% -10%, rgba(0,217,255,.08), transparent 60%),
-      radial-gradient(900px 500px at 10% 110%, rgba(0,255,153,.08), transparent 60%),
-      linear-gradient(rgba(0,255,153,.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,255,153,.03) 1px, transparent 1px),
+      radial-gradient(900px 500px at 10% 110%, rgba(46,166,255,.08), transparent 60%),
+      linear-gradient(rgba(46,166,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(46,166,255,.03) 1px, transparent 1px),
       var(--bg);
     background-size:auto, auto, 42px 42px, 42px 42px, auto;
     color:#e8f4ee; font-family:"Segoe UI",Verdana,sans-serif;
@@ -27,25 +27,25 @@
   header {
     display:flex; align-items:center; gap:16px;
     padding:20px 28px 18px; border-bottom:1px solid var(--line);
-    background:linear-gradient(180deg, rgba(0,255,153,.05), transparent);
+    background:linear-gradient(180deg, rgba(46,166,255,.05), transparent);
   }
   .logo { width:52px; height:52px; border-radius:12px; object-fit:cover;
-    box-shadow:0 0 24px rgba(0,255,153,.22), 0 0 0 1px rgba(0,255,153,.2); }
+    box-shadow:0 0 24px rgba(46,166,255,.22), 0 0 0 1px rgba(46,166,255,.2); }
   .brand h1 {
     font-size:20px; font-weight:800; letter-spacing:3px; text-transform:uppercase;
-    text-shadow:0 0 16px rgba(0,255,153,.4); line-height:1.1;
+    text-shadow:0 0 16px rgba(46,166,255,.4); line-height:1.1;
   }
-  .brand .sub { font-size:11.5px; letter-spacing:2px; color:#9fd8c0; font-weight:600; margin-top:2px; }
+  .brand .sub { font-size:11.5px; letter-spacing:2px; color:#a8d4f5; font-weight:600; margin-top:2px; }
   .h-spacer { flex:1; }
-  .clock { text-align:right; font-family:Consolas,monospace; font-size:13px; color:#9fd8c0; line-height:1.5; }
-  .clock .time { font-size:20px; font-weight:700; color:#fff; text-shadow:0 0 12px rgba(0,255,153,.35); }
+  .clock { text-align:right; font-family:Consolas,monospace; font-size:13px; color:#a8d4f5; line-height:1.5; }
+  .clock .time { font-size:20px; font-weight:700; color:#fff; text-shadow:0 0 12px rgba(46,166,255,.35); }
   .clock .net { display:inline-flex; align-items:center; gap:6px; font-size:11px; letter-spacing:1.5px; }
 
   /* ---- Cuerpo ---- */
   main { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:34px 28px; }
   .section-title {
     display:flex; align-items:center; gap:12px; font-size:13px; letter-spacing:4px;
-    color:#cfe9dd; font-weight:700; text-transform:uppercase; margin-bottom:26px;
+    color:#cfe8ff; font-weight:700; text-transform:uppercase; margin-bottom:26px;
   }
   .section-title::before, .section-title::after {
     content:""; height:1px; width:56px; background:linear-gradient(90deg,transparent,var(--accent));
@@ -60,7 +60,7 @@
 
   .card {
     position:relative; display:flex; flex-direction:column; align-items:center; text-align:center;
-    background:linear-gradient(165deg, rgba(0,255,153,.05), transparent 60%), var(--card);
+    background:linear-gradient(165deg, rgba(46,166,255,.05), transparent 60%), var(--card);
     border:1px solid var(--line); border-radius:20px; padding:26px 20px 20px;
     cursor:pointer; overflow:hidden;
     transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease;
@@ -72,52 +72,52 @@
   @keyframes rise { from{opacity:0; transform:translateY(14px)} to{opacity:1; transform:translateY(0)} }
   .card:hover {
     transform:translateY(-5px);
-    border-color:rgba(0,255,153,.55);
-    box-shadow:0 14px 46px rgba(0,255,153,.15);
+    border-color:rgba(46,166,255,.55);
+    box-shadow:0 14px 46px rgba(46,166,255,.15);
   }
   .card.active {
     border-color:var(--accent);
-    box-shadow:0 0 0 1px var(--accent), 0 14px 46px rgba(0,255,153,.2);
+    box-shadow:0 0 0 1px var(--accent), 0 14px 46px rgba(46,166,255,.2);
   }
   .card.active::after {
     content:""; position:absolute; inset:0; pointer-events:none;
-    background:radial-gradient(600px 220px at 50% 0%, rgba(0,255,153,.12), transparent 70%);
+    background:radial-gradient(600px 220px at 50% 0%, rgba(46,166,255,.12), transparent 70%);
   }
 
   /* cabecera de tarjeta: dot + atajo */
   .card-top { position:absolute; top:12px; left:14px; right:14px;
     display:flex; justify-content:space-between; align-items:center; }
-  .dot { width:9px; height:9px; border-radius:50%; background:#566; position:relative; }
+  .dot { width:9px; height:9px; border-radius:50%; background:#455; position:relative; }
   .dot.online { background:var(--accent); box-shadow:0 0 8px var(--accent); animation:blink 1.8s infinite; }
   .dot.offline { background:var(--danger); box-shadow:0 0 8px var(--danger); }
   @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.4} }
   .shortcut {
-    font-family:Consolas,monospace; font-size:10px; color:#9fd8c0;
+    font-family:Consolas,monospace; font-size:10px; color:#a8d4f5;
     background:#0c1220; border:1px solid var(--line); border-radius:6px; padding:2px 7px;
   }
 
   .tile {
     width:62px; height:62px; border-radius:16px; display:grid; place-items:center;
     font-size:32px; margin:18px 0 14px;
-    background:radial-gradient(120% 120% at 30% 20%, rgba(0,255,153,.22), rgba(0,217,255,.08) 60%, #0c1220 120%);
-    border:1px solid var(--line); box-shadow:0 0 22px rgba(0,255,153,.12);
+    background:radial-gradient(120% 120% at 30% 20%, rgba(46,166,255,.22), rgba(0,217,255,.08) 60%, #0c1220 120%);
+    border:1px solid var(--line); box-shadow:0 0 22px rgba(46,166,255,.12);
   }
   .name { font-size:16.5px; font-weight:800; letter-spacing:.5px; }
   .desc { font-size:12px; color:var(--muted); line-height:1.5; margin-top:7px; max-width:210px; }
 
   .active-badge {
-    margin-top:14px; font-size:10px; letter-spacing:2.5px; font-weight:800; color:#02120a;
+    margin-top:14px; font-size:10px; letter-spacing:2.5px; font-weight:800; color:#03101c;
     background:linear-gradient(90deg,var(--accent),var(--accent-cyan));
-    padding:5px 16px; border-radius:99px; box-shadow:0 4px 16px rgba(0,255,153,.3);
+    padding:5px 16px; border-radius:99px; box-shadow:0 4px 16px rgba(46,166,255,.3);
   }
   .open-btn {
     margin-top:14px; padding:9px 30px; border-radius:99px; font-weight:700; font-size:12.5px;
-    letter-spacing:1.5px; color:#9fd8c0; border:1px solid var(--line); background:rgba(0,255,153,.04);
+    letter-spacing:1.5px; color:#a8d4f5; border:1px solid var(--line); background:rgba(46,166,255,.04);
     transition:all .16s ease;
   }
   .card:hover .open-btn {
     background:linear-gradient(90deg,var(--accent),var(--accent-cyan));
-    color:#02120a; border-color:transparent; box-shadow:0 4px 18px rgba(0,255,153,.3);
+    color:#03101c; border-color:transparent; box-shadow:0 4px 18px rgba(46,166,255,.3);
   }
   .card.active .active-badge { display:block; }
   .card.active .open-btn { display:none; }
@@ -128,13 +128,13 @@
     border-top:1px solid var(--line); font-family:Consolas,monospace; font-size:11.5px;
     color:var(--muted); letter-spacing:1px; flex-wrap:wrap;
   }
-  footer .sys { color:#9fd8c0; }
+  footer .sys { color:#a8d4f5; }
   .spacer { flex:1; }
   .net-status { display:inline-flex; align-items:center; gap:8px; }
 
   /* ---- Tagline ---- */
   .tagline {
-    max-width:680px; text-align:center; color:#cfe9dd; font-size:13.5px; line-height:1.7;
+    max-width:680px; text-align:center; color:#cfe8ff; font-size:13.5px; line-height:1.7;
     letter-spacing:.3px; margin:0 auto 30px;
   }
 </style>
@@ -149,7 +149,7 @@
     <div class="h-spacer"></div>
     <div class="clock">
       <div class="time" id="clock">--:--:--</div>
-      <div class="net"><span class="net-dot" style="width:7px;height:7px;border-radius:50%;background:#566"></span>
+      <div class="net"><span class="net-dot" style="width:7px;height:7px;border-radius:50%;background:#455"></span>
       <span id="netlabel">SYS.INIT SECURE_LINK</span></div>
     </div>
   </header>
