@@ -123,6 +123,7 @@ function createMain() {
     minWidth: 800,
     minHeight: 600,
     show: false,
+    frame: false,
     icon: path.join(__dirname, 'icon.png'),
     title: 'Centinela BETA — Inicio',
     webPreferences: {
@@ -187,6 +188,15 @@ app.whenReady().then(async () => {
   ipcMain.on('open-external', (event, url) => {
     if (typeof url === 'string' && /^https?:\/\//i.test(url)) shell.openExternal(url);
   });
+
+  ipcMain.on('win-minimize', () => mainWindow?.minimize());
+
+  ipcMain.on('win-maximize-toggle', () => {
+    if (!mainWindow) return;
+    if (mainWindow.isMaximized()) mainWindow.unmaximize(); else mainWindow.maximize();
+  });
+
+  ipcMain.on('win-close', () => mainWindow?.close());
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createMain();
