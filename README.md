@@ -20,7 +20,7 @@ App de escritorio para Windows que abre **seis plataformas de monitoreo y datos*
 
 ## Descripción
 
-**Centinela BETA** es un *wrapper* de escritorio construido con [Electron](https://www.electronjs.org/). Su propósito es ofrecer acceso rápido y autónomo a seis plataformas de monitoreo de inteligencia y datos.
+**Centinela BETA** es un *wrapper* de escritorio construido con [Electron](https://www.electronjs.org/). Su propósito es ofrecer acceso rápido y autónomo a **ocho plataformas** de monitoreo de inteligencia y datos.
 
 Características principales:
 
@@ -38,10 +38,10 @@ Características principales:
 - **Ventana dedicada** (1280×800, tamaño mínimo 800×600) con **marco nativo de Windows** y menú clásico siempre visible (Centinela, Ver, Ayuda).
 - **Tema azul y negro** en toda la interfaz (pantalla de inicio y splash), con acentos `#2ea6ff` → `#00b4ff`.
 - **Pantalla de inicio**: al arrancar (y con **Inicio** del menú / Ctrl+H) se muestra un lanzador con tarjetas para elegir cada web, tagline descriptivo, reloj en vivo, estado de conexión de cada plataforma (online/offline) e **interruptor "Encriptar la Intra-Net"** (desactivado por defecto; al activarlo un **LED** pasa de rojo a verde y el indicador cambia a *SYS.ENCRYPTION ACTIVE*).
-- **Tarjetas con imágenes** propias para Palantir, EC NEWS y EC Terminal Data (las demás usan emojis).
+- **Tarjetas con imágenes** propias para Palantir, EC NEWS, EC Terminal Data y EC Send Pro (las demás usan emojis).
 - **Opción "Sobre el programa"** en el menú **Ayuda** (F1): modal con la info de Centinela BETA, la descripción y un botón que abre la web de Estalingrado Corp (`estalingradocorp.qzz.io`).
 - **Menú nativo** con los módulos **Centinela**, **Ver** y **Ayuda**:
-  - **Inicio** (Ctrl+H) y atajos **Ctrl+1 … Ctrl+6** para cambiar de web.
+  - **Inicio** (Ctrl+H) y atajos **Ctrl+1 … Ctrl+8** para cambiar de web.
   - Recargar (Ctrl+R), DevTools (F12), Pantalla completa (F11).
   - "Sobre el programa" y accesos a las webs en el navegador.
 - **Pantalla de carga (splash)** con logo, título y texto *"Conectando a La Intra-net servicio estalingrado corp…"* con animación de puntos.
@@ -63,6 +63,8 @@ Características principales:
 | Ctrl+4 | EC NEWS | https://nicotips27.github.io/ECnews/ |
 | Ctrl+5 | EC Terminal Data | https://nicotips27.github.io/Estalingrado-corp-Terminal-data/ |
 | Ctrl+6 | Radio Garden | https://radio.garden/ |
+| Ctrl+7 | EC Send Pro | https://estalingradocorp.github.io/ECsendpro/ |
+| Ctrl+8 | Famelack | https://famelack.com/ |
 
 > World Monitor abre su dashboard en vivo con una configuración concreta (zoom global, últimos 7 días y varias capas de datos).
 
@@ -82,6 +84,7 @@ lucher/
 ├── logo.jpg            # Logo de Estalingrado Corp (splash, tarjeta EC Terminal Data)
 ├── img-ecnews.jpg      # Imagen de la tarjeta EC NEWS
 ├── img-palantir.png    # Imagen de la tarjeta Palantir
+├── img-ecsendpro.png   # Imagen de la tarjeta EC Send Pro
 ├── icon.png            # Icono de la app (derivado del logo)
 ├── make-icon.js        # Script que genera icon.png (uso único)
 ├── adblock.js          # Bloqueo de anuncios con caché local
@@ -207,5 +210,5 @@ El instalador es un **programa de uso interno** que no está firmado digitalment
 - **Logo de Estalingrado Corp** y tema de interfaz **azul/negro**.
 - **Interruptor "Encriptar la Intra-Net"** junto al reloj.
 - **Imágenes personalizadas** en las tarjetas de Palantir, EC NEWS y EC Terminal Data.
-- **Ventana frameless estilo macOS** con botones de tráfico, botón ☰ Menú (recupera todas las opciones del menú nativo) y barra de título propia.
-- **Vuelta a la ventana nativa de Windows**: se elimina el marco frameless y la interfaz vuelve a la ventana estándar con su menú clásico (Centinela, Ver, Ayuda) siempre visible.
+- Se añaden **EC Send Pro** y **Famelack** (Ctrl+7, Ctrl+8).
+- **Ventana nativa de Windows** con menú clásico siempre visible (Centinela, Ver, Ayuda).
