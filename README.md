@@ -1,6 +1,6 @@
 # Centinela BETA
 
-App de escritorio para Windows que abre la plataforma **Conflict Radar 360** en su propia ventana, sin necesidad de navegador. Incluye una pantalla de carga con logo y texto de la "Intra-net" de Estalingrado Corp.
+App de escritorio para Windows que abre **seis plataformas de monitoreo y datos** en ventanas dedicadas, sin necesidad de navegador. Construida con Electron, con temática **azul y negro**, pantalla de carga con logo de Estalingrado Corp y bloqueo de anuncios integrado.
 
 ---
 
@@ -8,30 +8,25 @@ App de escritorio para Windows que abre la plataforma **Conflict Radar 360** en 
 
 1. [Descripción](#descripción)
 2. [Características](#características)
-3. [Estructura del proyecto](#estructura-del-proyecto)
-4. [Requisitos](#requisitos)
-5. [Puesta en marcha (desarrollo)](#puesta-en-marcha-desarrollo)
-6. [Generar el instalador](#generar-el-instalador)
-7. [Distribución](#distribución)
-8. [Solución de problemas](#solución-de-problemas)
+3. [Plataformas](#plataformas)
+4. [Estructura del proyecto](#estructura-del-proyecto)
+5. [Requisitos](#requisitos)
+6. [Puesta en marcha (desarrollo)](#puesta-en-marcha-desarrollo)
+7. [Generar el instalador](#generar-el-instalador)
+8. [Distribución](#distribución)
+9. [Solución de problemas](#solución-de-problemas)
 
 ---
 
 ## Descripción
 
-**Centinela BETA** es un *wrapper* de escritorio construido con [Electron](https://www.electronjs.org/). Su propósito es ofrecer acceso rápido y autónomo a dos plataformas de monitoreo:
-
-- [**Palantir Gotham**](https://www.palantir.com/platforms/gotham/) (sitio principal)
-- [**Conflict Radar 360**](https://www.conflictradar360.com/)
-- [**World Monitor**](https://www.worldmonitor.app/) (dashboard en vivo: `worldmonitor.app/dashboard`)
-- [**EC NEWS**](https://nicotips27.github.io/ECnews/) (directorio global de prensa de Estalingrado Corp)
-- [**EC Terminal Data**](https://nicotips27.github.io/Estalingrado-corp-Terminal-data/) (terminal de mercados, divisas y materias primas)
-- [**Radio Garden**](https://radio.garden/) (explorar emisoras de radio de todo el mundo)
+**Centinela BETA** es un *wrapper* de escritorio construido con [Electron](https://www.electronjs.org/). Su propósito es ofrecer acceso rápido y autónomo a seis plataformas de monitoreo de inteligencia y datos.
 
 Características principales:
 
 - Carga cada web en una ventana dedicada.
-- **Menú nativo** para alternar entre ambas webs.
+- **Pantalla de inicio** con tarjetas para elegir cada plataforma.
+- **Menú nativo** para alternar entre webs.
 - Muestra una pantalla de carga animada mientras las webs se conectan.
 - Reenvía los enlaces externos (que no sean de las webs permitidas) al navegador del sistema.
 - Se instala como programa normal de Windows (con acceso directo en escritorio e inicio).
@@ -41,18 +36,35 @@ Características principales:
 ## Características
 
 - **Ventana dedicada** (1280×800, tamaño mínimo 800×600).
-- **Pantalla de inicio**: al arrancar (y con **Inicio** del menú / Ctrl+H) se muestra un lanzador con tarjetas para elegir cada web, tagline descriptivo, reloj en vivo y estado de conexión de cada plataforma.
+- **Tema azul y negro** en toda la interfaz (pantalla de inicio y splash), con acentos `#2ea6ff` → `#00b4ff`.
+- **Pantalla de inicio**: al arrancar (y con **Inicio** del menú / Ctrl+H) se muestra un lanzador con tarjetas para elegir cada web, tagline descriptivo, reloj en vivo, estado de conexión de cada plataforma (online/offline) e **interruptor "Encriptar la Intra-Net"** (desactivado por defecto; al activarlo cambia el indicador a *SYS.ENCRYPTION ACTIVE*).
+- **Tarjetas con imágenes** propias para Palantir, EC NEWS y EC Terminal Data (las demás usan emojis).
 - **Opción "Sobre el programa"** en el menú **Ayuda** (F1): modal con la info de Centinela BETA, la descripción y un botón que abre la web de Estalingrado Corp (`estalingradocorp.qzz.io`).
 - **Menú nativo** con los módulos **Centinela**, **Ver** y **Ayuda**:
-  - **Inicio** (Ctrl+H), **Palantir Gotham** (Ctrl+1), **Conflict Radar 360** (Ctrl+2), **World Monitor** (Ctrl+3, dashboard en vivo), **EC NEWS** (Ctrl+4), **EC Terminal Data** (Ctrl+5) y **Radio Garden** (Ctrl+6) para cambiar de web.
+  - **Inicio** (Ctrl+H) y atajos **Ctrl+1 … Ctrl+6** para cambiar de web.
   - Recargar (Ctrl+R), DevTools (F12), Pantalla completa (F11).
-  - Cuadro "Acerca de" y accesos a las webs en el navegador.
+  - "Sobre el programa" y accesos a las webs en el navegador.
 - **Pantalla de carga (splash)** con logo, título y texto *"Conectando a La Intra-net servicio estalingrado corp…"* con animación de puntos.
 - **Carga en paralelo**: la web se carga en segundo plano mientras se muestra el splash, con transición al terminar.
-- **Seguridad de navegación**: solo se permite Conflict Radar 360 y World Monitor; el resto de enlaces se abren en el navegador del sistema.
+- **Seguridad de navegación**: solo se permiten las plataformas configuradas; el resto de enlaces se abren en el navegador del sistema.
 - **Bloqueo de anuncios** (listas EasyList + EasyPrivacy con caché local).
 - **Aislamiento de procesos**: `contextIsolation: true` y `nodeIntegration: false`.
 - **Instalador NSIS** con asistente, selección de carpeta y accesos directos.
+
+---
+
+## Plataformas
+
+| Atajo | Plataforma | URL |
+| --- | --- | --- |
+| Ctrl+1 | Palantir Gotham | https://www.palantir.com/platforms/gotham/ |
+| Ctrl+2 | Conflict Radar 360 | https://www.conflictradar360.com/ |
+| Ctrl+3 | World Monitor | https://www.worldmonitor.app/dashboard?… |
+| Ctrl+4 | EC NEWS | https://nicotips27.github.io/ECnews/ |
+| Ctrl+5 | EC Terminal Data | https://nicotips27.github.io/Estalingrado-corp-Terminal-data/ |
+| Ctrl+6 | Radio Garden | https://radio.garden/ |
+
+> World Monitor abre su dashboard en vivo con una configuración concreta (zoom global, últimos 7 días y varias capas de datos).
 
 ---
 
@@ -62,13 +74,17 @@ Características principales:
 lucher/
 ├── package.json        # Configuración del proyecto, scripts y electron-builder
 ├── package-lock.json   # Bloqueo de dependencias (generado)
-├── main.js             # Proceso principal: crea ventanas y maneja la carga
+├── main.js             # Proceso principal: ventanas, menú nativo, navegación segura e IPC
 ├── preload.js          # Puente seguro entre el renderizador y Node
 ├── renderer.html       # Página de respaldo (poco usada)
 ├── splash.html         # Pantalla de carga con el logo y el texto
-├── logo.jpg            # Logo de la pantalla de carga (descargado)
-├── icon.png            # Icono de la app (radar, generado)
+├── home.html           # Pantalla de inicio (lanzador)
+├── logo.jpg            # Logo de Estalingrado Corp (splash, tarjeta EC Terminal Data)
+├── img-ecnews.jpg      # Imagen de la tarjeta EC NEWS
+├── img-palantir.png    # Imagen de la tarjeta Palantir
+├── icon.png            # Icono de la app (derivado del logo)
 ├── make-icon.js        # Script que genera icon.png (uso único)
+├── adblock.js          # Bloqueo de anuncios con caché local
 ├── node_modules/       # Dependencias (generado por npm)
 └── dist/               # Instaladores generados (resultado del build)
     └── Centinela BETA Setup 1.0.0.exe
@@ -78,13 +94,13 @@ lucher/
 
 | Archivo | Rol |
 | --- | --- |
-| `main.js` | Proceso principal de Electron. Define las webs, construye el menú nativo, crea la ventana del splash y la ventana principal, maneja la navegación segura y el IPC. |
-| `home.html` | Pantalla de inicio: tarjetas para elegir cada web al arrancar. |
+| `main.js` | Proceso principal de Electron. Define las webs, construye el menú nativo, crea la ventana del splash y la principal, maneja la navegación segura y el IPC. |
+| `home.html` | Pantalla de inicio: tarjetas para elegir cada web, reloj, estado de conexión, interruptor de encriptación y tagline. |
 | `splash.html` | Pantalla de carga: logo, título, subtítulo y texto de conexión con animación CSS. |
-| `preload.js` | Puente seguro (`window.conflictRadar` y `window.centinela.selectSite`) entre el renderizador y el proceso principal. |
+| `preload.js` | Puente seguro (`window.conflictRadar` y `window.centinela.{selectSite,getCurrent,openExternal}`) entre el renderizador y el proceso principal. |
 | `adblock.js` | Inicializa el bloqueo de anuncios (`@cliqz/adblocker`) con listas EasyList/EasyPrivacy y caché local. |
-| `package.json` | Define nombre, versión, scripts (`start`, `dist`) y la configuración de empaquetado con electron-builder. |
-| `make-icon.js` | Genera `icon.png` (un icono de radar 256×256) escribiendo un PNG válido con Node puro. |
+| `package.json` | Define nombre, versión, scripts (`start`, `dist`), archivos empaquetados y configuración de electron-builder. |
+| `make-icon.js` | Genera `icon.png` a partir de una imagen (uso único). |
 
 ---
 
@@ -168,7 +184,7 @@ El instalador es un **programa de uso interno** que no está firmado digitalment
 | Problema | Solución |
 | --- | --- |
 | Aviso azul "Editor desconocido" al instalar | Normal sin firma: **Más información → Ejecutar de todos modos**. |
-| La app no muestra la web (pantalla en blanco) | Verifica la conexión a `https://www.conflictradar360.com/` o `https://www.worldmonitor.app/` y que el sitio esté en línea. |
+| La app no muestra la web (pantalla en blanco) | Verifica la conexión a las plataformas y que el sitio esté en línea. |
 | No bloquea anuncios la primera vez | La primera ejecución necesita internet para descargar las listas EasyList/EasyPrivacy y guardarlas en caché. |
 | El splash se queda mucho tiempo | Es por red de seguridad; la app fuerza la transición a los ~14,6 s máx. |
 | Electron no descarga el binario al `npm install` | Revisa la clave `allowScripts` en `package.json`. |
@@ -186,3 +202,8 @@ El instalador es un **programa de uso interno** que no está firmado digitalment
 - Bloqueo de anuncios (EasyList + EasyPrivacy).
 - Menú nativo: se añade **World Monitor** y atajos de cambio de web (Ctrl+1 / Ctrl+2).
 - **Pantalla de inicio** con tarjetas para elegir cada web (Ctrl+H / menú Centinela).
+- Se añaden **EC NEWS**, **EC Terminal Data** y **Radio Garden** (Ctrl+4, Ctrl+5, Ctrl+6).
+- **"Sobre el programa"** movido al menú Ayuda con enlace a Estalingrado Corp.
+- **Logo de Estalingrado Corp** y tema de interfaz **azul/negro**.
+- **Interruptor "Encriptar la Intra-Net"** junto al reloj.
+- **Imágenes personalizadas** en las tarjetas de Palantir, EC NEWS y EC Terminal Data.
