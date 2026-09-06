@@ -25,6 +25,7 @@ App de escritorio para Windows que abre la plataforma **Conflict Radar 360** en 
 - [**Conflict Radar 360**](https://www.conflictradar360.com/)
 - [**World Monitor**](https://www.worldmonitor.app/) (dashboard en vivo: `worldmonitor.app/dashboard`)
 - [**EC NEWS**](https://nicotips27.github.io/ECnews/) (directorio global de prensa de Estalingrado Corp)
+- [**EC Terminal Data**](https://nicotips27.github.io/Estalingrado-corp-Terminal-data/) (terminal de mercados, divisas y materias primas)
 
 Características principales:
 
@@ -42,7 +43,7 @@ Características principales:
 - **Pantalla de inicio**: al arrancar (y con **Inicio** del menú / Ctrl+H) se muestra un lanzador con tarjetas para elegir cada web, tagline descriptivo, reloj en vivo y estado de conexión de cada plataforma.
 - **Opción "Sobre el programa"** en la pantalla de inicio (F1): modal con la info de Centinela BETA y enlace a la web de Estalingrado Corp (`estalingradocorp.qzz.io`).
 - **Menú nativo** con los módulos **Centinela**, **Ver** y **Ayuda**:
-  - **Inicio** (Ctrl+H), **Palantir Gotham** (Ctrl+1), **Conflict Radar 360** (Ctrl+2), **World Monitor** (Ctrl+3, dashboard en vivo) y **EC NEWS** (Ctrl+4) para cambiar de web.
+  - **Inicio** (Ctrl+H), **Palantir Gotham** (Ctrl+1), **Conflict Radar 360** (Ctrl+2), **World Monitor** (Ctrl+3, dashboard en vivo), **EC NEWS** (Ctrl+4) y **EC Terminal Data** (Ctrl+5) para cambiar de web.
   - Recargar (Ctrl+R), DevTools (F12), Pantalla completa (F11).
   - Cuadro "Acerca de" y accesos a las webs en el navegador.
 - **Pantalla de carga (splash)** con logo, título y texto *"Conectando a La Intra-net servicio estalingrado corp…"* con animación de puntos.

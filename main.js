@@ -6,7 +6,8 @@ const SITES = [
   { name: 'Palantir Gotham',   url: 'https://www.palantir.com/platforms/gotham/', shortcut: 'CmdOrCtrl+1' },
   { name: 'Conflict Radar 360', url: 'https://www.conflictradar360.com/',        shortcut: 'CmdOrCtrl+2' },
   { name: 'World Monitor',      url: 'https://www.worldmonitor.app/dashboard?lat=20.0000&lon=0.0000&zoom=1.00&view=global&timeRange=7d&layers=conflicts%2Cbases%2Chotspots%2Cnuclear%2Csanctions%2Cweather%2CcanadaAlerts%2Ceconomic%2Cwaterways%2Coutages%2Cmilitary%2Cnatural', shortcut: 'CmdOrCtrl+3' },
-  { name: 'EC NEWS',            url: 'https://nicotips27.github.io/ECnews/',                      shortcut: 'CmdOrCtrl+4' }
+  { name: 'EC NEWS',            url: 'https://nicotips27.github.io/ECnews/',                      shortcut: 'CmdOrCtrl+4' },
+  { name: 'EC Terminal Data',  url: 'https://nicotips27.github.io/Estalingrado-corp-Terminal-data/', shortcut: 'CmdOrCtrl+5' }
 ];
 
 let currentSite = -1; // -1 = pantalla de inicio
@@ -61,7 +62,7 @@ function buildMenu() {
             type: 'info',
             title: 'Centinela BETA',
             message: 'Centinela BETA v1.0.0',
-            detail: 'Plataforma de monitoreo de inteligencia.\nServicio Estalingrado Corp.\n\nAtajos: Ctrl+1 (Palantir) | Ctrl+2 (Conflict Radar) | Ctrl+3 (World Monitor) | Ctrl+4 (EC News)'
+            detail: 'Plataforma de monitoreo de inteligencia.\nServicio Estalingrado Corp.\n\nAtajos: Ctrl+1 (Palantir) | Ctrl+2 (Conflict Radar) | Ctrl+3 (World Monitor) | Ctrl+4 (EC News) | Ctrl+5 (EC Terminal Data)'
           });
         }},
         { type: 'separator' },

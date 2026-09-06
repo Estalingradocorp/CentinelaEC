@@ -66,8 +66,9 @@
     transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease;
     animation:rise .5s ease both;
   }
-  .card:nth-child(1){animation-delay:.05s} .card:nth-child(2){animation-delay:.12s}
-  .card:nth-child(3){animation-delay:.19s} .card:nth-child(4){animation-delay:.26s}
+  .card:nth-child(1){animation-delay:.05s} .card:nth-child(2){animation-delay:.11s}
+  .card:nth-child(3){animation-delay:.17s} .card:nth-child(4){animation-delay:.23s}
+  .card:nth-child(5){animation-delay:.29s} .card:nth-child(6){animation-delay:.35s}
   @keyframes rise { from{opacity:0; transform:translateY(14px)} to{opacity:1; transform:translateY(0)} }
   .card:hover {
     transform:translateY(-5px);
@@ -226,7 +227,8 @@ const SITES = [
   { name:'Palantir Gotham',     desc:'Inteligencia operativa para defensa y seguridad.',        icon:'🛰️', probe:'https://www.palantir.com/platforms/gotham/' },
   { name:'Conflict Radar 360',  desc:'Radar de conflictos globales en tiempo real.',            icon:'🌐', probe:'https://www.conflictradar360.com/' },
   { name:'World Monitor',       desc:'Mapa global en vivo: conflictos, mercados y satélites.',  icon:'🗺️', probe:'https://www.worldmonitor.app/' },
-  { name:'EC NEWS',             desc:'Directorio global de prensa y agencias EC.',              icon:'📰', probe:'https://nicotips27.github.io/ECnews/' }
+  { name:'EC NEWS',             desc:'Directorio global de prensa y agencias EC.',              icon:'📰', probe:'https://nicotips27.github.io/ECnews/' },
+  { name:'EC Terminal Data',   desc:'Terminal de mercados, divisas, materias primas y más.',       icon:'📈', probe:'https://nicotips27.github.io/Estalingrado-corp-Terminal-data/' }
 ];
 
 const grid = document.getElementById('grid');
@@ -258,7 +260,7 @@ function render() {
 
   const about = document.createElement('div');
   about.className = 'card about';
-  about.style.animationDelay = '.33s';
+  about.style.animationDelay = '.4s';
   about.innerHTML =
     '<div class="card-top"><span></span><span class="shortcut">F1</span></div>' +
     '<div class="tile" style="font-size:30px">ℹ️</div>' +
@@ -297,8 +299,8 @@ function updateNetStatus() {
   const dotEl = document.getElementById('netdot');
   const text = document.getElementById('nettext');
   if (total === 0) return;
-  if (online === total) { dotEl.className = 'dot online'; text.textContent = 'INTRA-NET ONLINE · 4/4'; }
-  else if (online === 0) { dotEl.className = 'dot offline'; text.textContent = 'SIN CONEXIÓN · 0/4'; }
+  if (online === total) { dotEl.className = 'dot online'; text.textContent = 'INTRA-NET ONLINE · ' + total + '/' + total; }
+  else if (online === 0) { dotEl.className = 'dot offline'; text.textContent = 'SIN CONEXIÓN · 0/' + total; }
   else { dotEl.className = 'dot online'; text.style.color = '#ffd166'; text.textContent = 'INTRA-NET PARCIAL · ' + online + '/' + total; }
 }
 
