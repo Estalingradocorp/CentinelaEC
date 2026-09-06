@@ -35,7 +35,7 @@ Características principales:
 
 ## Características
 
-- **Ventana dedicada** (1280×800, tamaño mínimo 800×600) **sin marco nativo (frameless)** con barra de título propia estilo **macOS**: botones de tráfico rojo/amarillo/verde (cerrar, minimizar, maximizar) arriba a la izquierda y zona arrastrable.
+- **Ventana dedicada** (1280×800, tamaño mínimo 800×600) **sin marco nativo (frameless)** con barra de título propia estilo **macOS**: botones de tráfico rojo/amarillo/verde (cerrar, minimizar, maximizar) arriba a la izquierda, botón **☰ Menú** con todas las opciones (Inicio, plataformas, recargar, DevTools, pantalla completa, sobre el programa, salir) y zona arrastrable.
 - **Tema azul y negro** en toda la interfaz (pantalla de inicio y splash), con acentos `#2ea6ff` → `#00b4ff`.
 - **Pantalla de inicio**: al arrancar (y con **Inicio** del menú / Ctrl+H) se muestra un lanzador con tarjetas para elegir cada web, tagline descriptivo, reloj en vivo, estado de conexión de cada plataforma (online/offline) e **interruptor "Encriptar la Intra-Net"** (desactivado por defecto; al activarlo un **LED** pasa de rojo a verde y el indicador cambia a *SYS.ENCRYPTION ACTIVE*).
 - **Tarjetas con imágenes** propias para Palantir, EC NEWS y EC Terminal Data (las demás usan emojis).
@@ -207,4 +207,4 @@ El instalador es un **programa de uso interno** que no está firmado digitalment
 - **Logo de Estalingrado Corp** y tema de interfaz **azul/negro**.
 - **Interruptor "Encriptar la Intra-Net"** junto al reloj.
 - **Imágenes personalizadas** en las tarjetas de Palantir, EC NEWS y EC Terminal Data.
-- **Ventana frameless estilo macOS** con botones de tráfico y barra de título propia.
+- **Ventana frameless estilo macOS** con botones de tráfico, botón ☰ Menú (recupera todas las opciones del menú nativo) y barra de título propia.

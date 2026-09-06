@@ -12,10 +12,20 @@ contextBridge.exposeInMainWorld('centinela', {
   selectSite: (index) => ipcRenderer.send('navigate', index),
   getCurrent: () => ipcRenderer.invoke('get-current'),
   openExternal: (url) => ipcRenderer.send('open-external', url),
+  getSites: () => ipcRenderer.invoke('get-sites'),
   windowControls: {
     minimize: () => ipcRenderer.send('win-minimize'),
     toggleMaximize: () => ipcRenderer.send('win-maximize-toggle'),
     close: () => ipcRenderer.send('win-close')
+  },
+  menu: {
+    goHome: () => ipcRenderer.send('navigate', -1),
+    selectSite: (i) => ipcRenderer.send('navigate', i),
+    reload: () => ipcRenderer.send('win-reload'),
+    devtools: () => ipcRenderer.send('win-devtools'),
+    fullscreen: () => ipcRenderer.send('win-fullscreen'),
+    about: () => ipcRenderer.send('win-about'),
+    quit: () => ipcRenderer.send('app-quit')
   }
 });
 
@@ -64,6 +74,34 @@ function injectMacTitlebar() {
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
     #${TB_ID} .tb-grip { width: 70px; -webkit-app-region: drag; }
+    #${TB_ID} .tb-menu-wrap { position: relative; -webkit-app-region: no-drag; margin-left: 10px; }
+    #${TB_ID} .tb-menu-btn {
+      color: #cfe8ff; background: rgba(46,166,255,.10); border: 1px solid rgba(46,166,255,.25);
+      border-radius: 7px; padding: 4px 10px; font-size: 12px; cursor: pointer;
+      font-family: "Segoe UI", system-ui, sans-serif; letter-spacing: 1px;
+      transition: background .15s ease, border-color .15s ease;
+    }
+    #${TB_ID} .tb-menu-btn:hover { background: rgba(46,166,255,.22); border-color: rgba(46,166,255,.5); }
+    #${TB_ID} .tb-dropdown {
+      display: none; position: absolute; top: calc(100% + 8px); left: 0; min-width: 250px;
+      background: rgba(8,13,24,0.97); border: 1px solid rgba(46,166,255,.3); border-radius: 10px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.6); padding: 6px; z-index: 2147483647;
+      font-family: "Segoe UI", system-ui, sans-serif;
+    }
+    #${TB_ID} .tb-dropdown.open { display: block; animation: tbdrop .14s ease; }
+    @keyframes tbdrop { from { opacity: 0; transform: translateY(-6px);} to { opacity:1; transform: translateY(0);} }
+    #${TB_ID} .tb-item {
+      padding: 8px 12px; border-radius: 7px; color: #cfe8ff; font-size: 12.5px;
+      cursor: pointer; display: flex; align-items: center; gap: 8px;
+      transition: background .12s ease;
+    }
+    #${TB_ID} .tb-item:hover { background: rgba(46,166,255,.18); }
+    #${TB_ID} .tb-item .kbd {
+      margin-left: auto; font-size: 10.5px; color: #7f9abf; font-family: Consolas, monospace;
+    }
+    #${TB_ID} .tb-item.quit { color: #ff8080; }
+    #${TB_ID} .tb-item.quit:hover { background: rgba(255,93,93,.16); }
+    #${TB_ID} .tb-sep { height: 1px; margin: 5px 8px; background: rgba(46,166,255,.2); }
   `;
 
   const lights = document.createElement('div');
@@ -85,11 +123,90 @@ function injectMacTitlebar() {
   title.className = 'tb-title';
   title.textContent = 'Centinela BETA';
 
+  // ---- Menú (recupera las opciones del menú nativo) ----
+  const menuWrap = document.createElement('div');
+  menuWrap.className = 'tb-menu-wrap';
+  const menuBtn = document.createElement('div');
+  menuBtn.className = 'tb-menu-btn';
+  menuBtn.textContent = '☰ Menú';
+  const dropdown = document.createElement('div');
+  dropdown.className = 'tb-dropdown';
+  menuWrap.appendChild(menuBtn);
+  menuWrap.appendChild(dropdown);
+
+  const addMenuGroup = (label, items) => {
+    if (label) {
+      const h = document.createElement('div');
+      h.textContent = label;
+      h.style.cssText = 'padding:6px 12px 2px;font-size:10px;letter-spacing:2px;color:#7f9abf;text-transform:uppercase;';
+      dropdown.appendChild(h);
+    }
+    items.forEach(it => {
+      if (it === 'sep') { dropdown.appendChild(document.createElement('div')).className = 'tb-sep'; return; }
+      const el = document.createElement('div');
+      el.className = 'tb-item' + (it.quit ? ' quit' : '');
+      el.textContent = it.label;
+      if (it.kbd) {
+        const k = document.createElement('span');
+        k.className = 'kbd';
+        k.textContent = it.kbd;
+        el.appendChild(k);
+      }
+      el.addEventListener('click', () => { dropdown.classList.remove('open'); it.action(); });
+      dropdown.appendChild(el);
+    });
+  };
+
+  addMenuGroup('Centinela', [
+    { label: 'Inicio', kbd: 'Ctrl+H', action: () => ipcRenderer.send('navigate', -1) },
+    { label: 'Salir', kbd: 'Ctrl+Q', quit: true, action: () => ipcRenderer.send('app-quit') }
+  ]);
+
+  // Sitios bajo el grupo Centinela (se cargan de forma asíncrona)
+  const sitesHeader = document.createElement('div');
+  sitesHeader.textContent = 'Plataformas';
+  sitesHeader.style.cssText = 'padding:6px 12px 2px;font-size:10px;letter-spacing:2px;color:#7f9abf;text-transform:uppercase;';
+  dropdown.appendChild(sitesHeader);
+  ipcRenderer.invoke('get-sites').then(sites => {
+    sites.forEach(s => {
+      const el = document.createElement('div');
+      el.className = 'tb-item';
+      el.textContent = s.name;
+      const k = document.createElement('span');
+      k.className = 'kbd';
+      k.textContent = 'Ctrl+' + (s.index + 1);
+      el.appendChild(k);
+      el.addEventListener('click', () => { dropdown.classList.remove('open'); ipcRenderer.send('navigate', s.index); });
+      dropdown.appendChild(el);
+    });
+  });
+
+  addMenuGroup('Ver', [
+    { label: 'Recargar', kbd: 'Ctrl+R', action: () => ipcRenderer.send('win-reload') },
+    { label: 'DevTools', kbd: 'F12', action: () => ipcRenderer.send('win-devtools') },
+    'sep',
+    { label: 'Pantalla completa', kbd: 'F11', action: () => ipcRenderer.send('win-fullscreen') }
+  ]);
+
+  addMenuGroup('Ayuda', [
+    { label: 'Sobre el programa', kbd: 'F1', action: () => ipcRenderer.send('win-about') }
+  ]);
+
+  menuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dropdown.classList.toggle('open');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!dropdown.contains(e.target) && e.target !== menuBtn) dropdown.classList.remove('open');
+  });
+
   const grip = document.createElement('div');
   grip.className = 'tb-grip';
 
   bar.appendChild(style);
   bar.appendChild(lights);
+  bar.appendChild(menuWrap);
   bar.appendChild(title);
   bar.appendChild(grip);
   document.body.appendChild(bar);

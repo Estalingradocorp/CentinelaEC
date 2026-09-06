@@ -57,20 +57,7 @@ function buildMenu() {
     {
       label: 'Ayuda',
       submenu: [
-        { label: 'Sobre el programa', accelerator: 'F1', click: () => {
-          const { dialog, shell } = require('electron');
-          dialog.showMessageBox(mainWindow, {
-            type: 'info',
-            title: 'Centinela BETA',
-            message: 'Centinela BETA v1.0.0 · Servicio Estalingrado Corp',
-            detail: 'Centro de inteligencia global. Monitoreá el mundo, analizá información y seguí acontecimientos en tiempo real desde una única plataforma.\n\nAtajos: Ctrl+1 (Palantir) | Ctrl+2 (Conflict Radar) | Ctrl+3 (World Monitor) | Ctrl+4 (EC News) | Ctrl+5 (EC Terminal Data) | Ctrl+6 (Radio Garden)\n\nWeb: estalingradocorp.qzz.io',
-            buttons: ['Cerrar', 'Visitar Estalingrado Corp'],
-            cancelId: 0,
-            defaultId: 0
-          }).then(({ response }) => {
-            if (response === 1) shell.openExternal('https://estalingradocorp.qzz.io/');
-          });
-        }},
+        { label: 'Sobre el programa', accelerator: 'F1', click: showAbout },
         { type: 'separator' },
         ...SITES.map(s => ({ label: s.name, click: () => shell.openExternal(s.url) }))
       ]
@@ -81,6 +68,28 @@ function buildMenu() {
 }
 
 const SITE_LABELS = SITES.map(s => s.name);
+
+function showAbout() {
+  const { dialog, shell } = require('electron');
+  dialog.showMessageBox(mainWindow, {
+    type: 'info',
+    title: 'Centinela BETA',
+    message: 'Centinela BETA v1.0.0 · Servicio Estalingrado Corp',
+    detail: 'Centro de inteligencia global. Monitoreá el mundo, analizá información y seguí acontecimientos en tiempo real desde una única plataforma.\n\nAtajos: Ctrl+1 (Palantir) | Ctrl+2 (Conflict Radar) | Ctrl+3 (World Monitor) | Ctrl+4 (EC News) | Ctrl+5 (EC Terminal Data) | Ctrl+6 (Radio Garden)\n\nWeb: estalingradocorp.qzz.io',
+    buttons: ['Cerrar', 'Visitar Estalingrado Corp'],
+    cancelId: 0,
+    defaultId: 0
+  }).then(({ response }) => {
+    if (response === 1) shell.openExternal('https://estalingradocorp.qzz.io/');
+  });
+}
+
+function reloadPage() { mainWindow?.webContents.reload(); }
+function toggleDevTools() { mainWindow?.webContents.toggleDevTools(); }
+function toggleFullScreen() {
+  if (!mainWindow) return;
+  mainWindow.setFullScreen(!mainWindow.isFullScreen());
+}
 
 function goHome() {
   if (!mainWindow || mainWindow.isDestroyed()) return;
@@ -185,6 +194,8 @@ app.whenReady().then(async () => {
 
   ipcMain.handle('get-current', () => currentSite);
 
+  ipcMain.handle('get-sites', () => SITES.map((s, i) => ({ name: s.name, index: i })));
+
   ipcMain.on('open-external', (event, url) => {
     if (typeof url === 'string' && /^https?:\/\//i.test(url)) shell.openExternal(url);
   });
@@ -197,6 +208,12 @@ app.whenReady().then(async () => {
   });
 
   ipcMain.on('win-close', () => mainWindow?.close());
+
+  ipcMain.on('win-reload', reloadPage);
+  ipcMain.on('win-devtools', toggleDevTools);
+  ipcMain.on('win-fullscreen', toggleFullScreen);
+  ipcMain.on('win-about', showAbout);
+  ipcMain.on('app-quit', () => app.quit());
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createMain();
