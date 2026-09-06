@@ -39,7 +39,8 @@ Características principales:
 ## Características
 
 - **Ventana dedicada** (1280×800, tamaño mínimo 800×600).
-- **Pantalla de inicio**: al arrancar (y con **Inicio** del menú / Ctrl+H) se muestra un lanzador con tarjetas para elegir cada web.
+- **Pantalla de inicio**: al arrancar (y con **Inicio** del menú / Ctrl+H) se muestra un lanzador con tarjetas para elegir cada web, tagline descriptivo, reloj en vivo y estado de conexión de cada plataforma.
+- **Opción "Sobre el programa"** en la pantalla de inicio (F1): modal con la info de Centinela BETA y enlace a la web de Estalingrado Corp (`estalingradocorp.qzz.io`).
 - **Menú nativo** con los módulos **Centinela**, **Ver** y **Ayuda**:
   - **Inicio** (Ctrl+H), **Palantir Gotham** (Ctrl+1), **Conflict Radar 360** (Ctrl+2), **World Monitor** (Ctrl+3, dashboard en vivo) y **EC NEWS** (Ctrl+4) para cambiar de web.
   - Recargar (Ctrl+R), DevTools (F12), Pantalla completa (F11).

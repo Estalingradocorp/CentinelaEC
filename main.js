@@ -177,6 +177,10 @@ app.whenReady().then(async () => {
 
   ipcMain.handle('get-current', () => currentSite);
 
+  ipcMain.on('open-external', (event, url) => {
+    if (typeof url === 'string' && /^https?:\/\//i.test(url)) shell.openExternal(url);
+  });
+
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createMain();
   });

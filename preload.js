@@ -10,5 +10,6 @@ contextBridge.exposeInMainWorld('conflictRadar', {
 
 contextBridge.exposeInMainWorld('centinela', {
   selectSite: (index) => ipcRenderer.send('navigate', index),
-  getCurrent: () => ipcRenderer.invoke('get-current')
+  getCurrent: () => ipcRenderer.invoke('get-current'),
+  openExternal: (url) => ipcRenderer.send('open-external', url)
 });
