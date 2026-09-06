@@ -1,0 +1,57 @@
+{
+  "name": "centinela-beta",
+  "version": "1.0.0",
+  "description": "Centinela BETA - App de escritorio",
+  "main": "main.js",
+  "author": "Centinela BETA",
+  "license": "MIT",
+  "allowScripts": {
+    "electron": "postinstall"
+  },
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win"
+  },
+  "build": {
+    "appId": "com.centinela.beta",
+    "productName": "Centinela BETA",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer.html",
+      "splash.html",
+      "home.html",
+      "logo.jpg",
+      "adblock.js"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Centinela BETA"
+    }
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "dependencies": {
+    "@cliqz/adblocker-electron": "^1.34.0"
+  }
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Centinela BETA</title>
+<style>
+  :root { --accent:#00ff99; --bg:#05070d; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html,body { height:100%; }
+  body {
+    background: radial-gradient(circle at 50% 40%, #0c1220 0%, var(--bg) 75%);
+    display:flex; align-items:center; justify-content:center;
+    font-family:"Segoe UI",Verdana,sans-serif; color:#e8f4ee;
+    user-select:none; overflow:hidden;
+  }
+  .wrap { text-align:center; padding:24px; }
+  .logo {
+    width:240px; height:240px; margin:0 auto 28px;
+    border-radius:24px; object-fit:cover;
+    box-shadow:0 0 60px rgba(0,255,153,.18), 0 0 0 1px rgba(0,255,153,.12);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { transform:scale(1); filter:brightness(1); }
+    50%     { transform:scale(1.02); filter:brightness(1.18); }
+  }
+  .title {
+    font-size:22px; font-weight:700; letter-spacing:3px;
+    text-transform:uppercase; color:#fff;
+    text-shadow:0 0 18px rgba(0,255,153,.5);
+    margin-bottom:6px;
+  }
+  .sub {
+    font-size:13px; color:#9fd8c0; letter-spacing:1px;
+    font-weight:500; margin-bottom:28px;
+  }
+  .loader { display:inline-flex; gap:8px; }
+  .loader span {
+    width:10px; height:10px; border-radius:50%;
+    background:var(--accent);
+    animation: bounce 1.2s infinite ease-in-out;
+    box-shadow:0 0 12px rgba(0,255,153,.7);
+  }
+  .loader span:nth-child(2){ animation-delay:.15s; }
+  .loader span:nth-child(3){ animation-delay:.3s; }
+  @keyframes bounce {
+    0%,100% { transform:translateY(0); opacity:.4; }
+    50% { transform:translateY(-10px); opacity:1; }
+  }
+  .status {
+    margin-top:26px; font-size:12px; letter-spacing:1px;
+    color:#5f7a6d; font-weight:600;
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <img class="logo" src="logo.jpg" alt="Centinela BETA">
+    <div class="title">Centinela BETA</div>
+    <div class="sub">Servicio Estalingrado Corp</div>
+    <div class="loader"><span></span><span></span><span></span></div>
+    <div class="status">Conectando a La Intra-net servicio estalingrado corp…</div>
+  </div>
+</body>
+</html>
