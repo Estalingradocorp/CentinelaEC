@@ -62,7 +62,14 @@
     box-shadow:0 0 16px rgba(46,166,255,.2); }
   .encrypt.on .sw { background:#0e4a8f; border-color:#2ea6ff; }
   .encrypt.on .sw::after { left:17px; background:#7fc4ff; box-shadow:0 0 8px rgba(46,166,255,.8); }
-  .encrypt .lock { font-size:13px; }
+  .encrypt .led {
+    width:11px; height:11px; border-radius:50%; background:#ff3b3b;
+    box-shadow:0 0 6px rgba(255,59,59,.5); transition:all .25s ease; flex:none;
+  }
+  .encrypt.on .led {
+    background:#22ff6a;
+    box-shadow:0 0 10px rgba(34,255,106,.7);
+  }
 
   /* ---- Cuerpo ---- */
   main { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:34px 28px; }
@@ -173,7 +180,7 @@
     <div class="h-spacer"></div>
     <div class="clock-row">
       <div class="encrypt" id="encrypt" title="Encriptar la Intra-Net">
-        <span class="lock">🔒</span>
+        <span class="led"></span>
         <span>Encriptar la Intra-Net</span>
         <span class="sw"></span>
       </div>
@@ -277,10 +284,10 @@ tick(); setInterval(tick, 1000);
 
 const encryptEl = document.getElementById('encrypt');
 const netLabel = document.getElementById('netlabel');
+const led = encryptEl.querySelector('.led');
 encryptEl.addEventListener('click', () => {
   const on = encryptEl.classList.toggle('on');
   netLabel.textContent = on ? 'SYS.ENCRYPTION ACTIVE' : 'SYS.INIT SECURE_LINK';
-  encryptEl.querySelector('.lock').textContent = on ? '🔒' : '🔓';
 });
 </script>
 </body>
