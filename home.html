@@ -40,6 +40,29 @@
   .clock { text-align:right; font-family:Consolas,monospace; font-size:13px; color:#a8d4f5; line-height:1.5; }
   .clock .time { font-size:20px; font-weight:700; color:#fff; text-shadow:0 0 12px rgba(46,166,255,.35); }
   .clock .net { display:inline-flex; align-items:center; gap:6px; font-size:11px; letter-spacing:1.5px; }
+  .clock-row { display:flex; align-items:center; gap:16px; }
+
+  /* ---- Interruptor encriptación ---- */
+  .encrypt {
+    display:inline-flex; align-items:center; gap:9px; cursor:pointer;
+    font-family:Consolas,monospace; font-size:11px; letter-spacing:1px; color:#8fb2cf;
+    padding:6px 12px; border:1px solid rgba(46,166,255,.2); border-radius:99px;
+    background:rgba(46,166,255,.04); transition:all .18s ease; user-select:none;
+  }
+  .encrypt:hover { border-color:rgba(46,166,255,.5); }
+  .encrypt .sw {
+    position:relative; width:34px; height:19px; border-radius:99px;
+    background:#0d1626; border:1px solid rgba(46,166,255,.3); transition:all .2s ease; flex:none;
+  }
+  .encrypt .sw::after {
+    content:""; position:absolute; top:2px; left:2px; width:13px; height:13px; border-radius:50%;
+    background:#5f7a99; transition:all .2s ease;
+  }
+  .encrypt.on { border-color:rgba(46,166,255,.7); color:#cfe8ff;
+    box-shadow:0 0 16px rgba(46,166,255,.2); }
+  .encrypt.on .sw { background:#0e4a8f; border-color:#2ea6ff; }
+  .encrypt.on .sw::after { left:17px; background:#7fc4ff; box-shadow:0 0 8px rgba(46,166,255,.8); }
+  .encrypt .lock { font-size:13px; }
 
   /* ---- Cuerpo ---- */
   main { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:34px 28px; }
@@ -147,10 +170,17 @@
       <div class="sub">Servicio Estalingrado Corp · Intra-net</div>
     </div>
     <div class="h-spacer"></div>
-    <div class="clock">
-      <div class="time" id="clock">--:--:--</div>
-      <div class="net"><span class="net-dot" style="width:7px;height:7px;border-radius:50%;background:#455"></span>
-      <span id="netlabel">SYS.INIT SECURE_LINK</span></div>
+    <div class="clock-row">
+      <div class="encrypt" id="encrypt" title="Encriptar la Intra-Net">
+        <span class="lock">🔒</span>
+        <span>Encriptar la Intra-Net</span>
+        <span class="sw"></span>
+      </div>
+      <div class="clock">
+        <div class="time" id="clock">--:--:--</div>
+        <div class="net"><span class="net-dot" style="width:7px;height:7px;border-radius:50%;background:#455"></span>
+        <span id="netlabel">SYS.INIT SECURE_LINK</span></div>
+      </div>
     </div>
   </header>
 
@@ -241,6 +271,14 @@ function tick() {
     '> ' + d.toLocaleDateString('es-ES') + '  SYS.INIT OK  ' + VERSION;
 }
 tick(); setInterval(tick, 1000);
+
+const encryptEl = document.getElementById('encrypt');
+const netLabel = document.getElementById('netlabel');
+encryptEl.addEventListener('click', () => {
+  const on = encryptEl.classList.toggle('on');
+  netLabel.textContent = on ? 'SYS.ENCRYPTION ACTIVE' : 'SYS.INIT SECURE_LINK';
+  encryptEl.querySelector('.lock').textContent = on ? '🔒' : '🔓';
+});
 </script>
 </body>
 </html>
