@@ -8,7 +8,9 @@ const SITES = [
   { name: 'World Monitor',      url: 'https://www.worldmonitor.app/dashboard?lat=20.0000&lon=0.0000&zoom=1.00&view=global&timeRange=7d&layers=conflicts%2Cbases%2Chotspots%2Cnuclear%2Csanctions%2Cweather%2CcanadaAlerts%2Ceconomic%2Cwaterways%2Coutages%2Cmilitary%2Cnatural', shortcut: 'CmdOrCtrl+3' },
   { name: 'EC NEWS',            url: 'https://nicotips27.github.io/ECnews/',                      shortcut: 'CmdOrCtrl+4' },
   { name: 'EC Terminal Data',  url: 'https://nicotips27.github.io/Estalingrado-corp-Terminal-data/', shortcut: 'CmdOrCtrl+5' },
-  { name: 'Radio Garden',      url: 'https://radio.garden/',                                   shortcut: 'CmdOrCtrl+6' }
+  { name: 'Radio Garden',      url: 'https://radio.garden/',                                   shortcut: 'CmdOrCtrl+6' },
+  { name: 'EC Send Pro',       url: 'https://estalingradocorp.github.io/ECsendpro/',            shortcut: 'CmdOrCtrl+7' },
+  { name: 'Famelack',          url: 'https://famelack.com/',                                    shortcut: 'CmdOrCtrl+8' }
 ];
 
 let currentSite = -1; // -1 = pantalla de inicio
@@ -67,15 +69,13 @@ function buildMenu() {
   Menu.setApplicationMenu(menu);
 }
 
-const SITE_LABELS = SITES.map(s => s.name);
-
 function showAbout() {
   const { dialog, shell } = require('electron');
   dialog.showMessageBox(mainWindow, {
     type: 'info',
     title: 'Centinela BETA',
     message: 'Centinela BETA v1.0.0 · Servicio Estalingrado Corp',
-    detail: 'Centro de inteligencia global. Monitoreá el mundo, analizá información y seguí acontecimientos en tiempo real desde una única plataforma.\n\nAtajos: Ctrl+1 (Palantir) | Ctrl+2 (Conflict Radar) | Ctrl+3 (World Monitor) | Ctrl+4 (EC News) | Ctrl+5 (EC Terminal Data) | Ctrl+6 (Radio Garden)\n\nWeb: estalingradocorp.qzz.io',
+    detail: 'Centro de inteligencia global. Monitoreá el mundo, analizá información y seguí acontecimientos en tiempo real desde una única plataforma.\n\nAtajos: Ctrl+1 (Palantir) | Ctrl+2 (Conflict Radar) | Ctrl+3 (World Monitor) | Ctrl+4 (EC News) | Ctrl+5 (EC Terminal Data) | Ctrl+6 (Radio Garden) | Ctrl+7 (EC Send Pro) | Ctrl+8 (Famelack)\n\nWeb: estalingradocorp.qzz.io',
     buttons: ['Cerrar', 'Visitar Estalingrado Corp'],
     cancelId: 0,
     defaultId: 0
@@ -132,7 +132,7 @@ function createMain() {
     minWidth: 800,
     minHeight: 600,
     show: false,
-    frame: false,
+    autoHideMenuBar: false,
     icon: path.join(__dirname, 'icon.png'),
     title: 'Centinela BETA — Inicio',
     webPreferences: {
@@ -194,26 +194,9 @@ app.whenReady().then(async () => {
 
   ipcMain.handle('get-current', () => currentSite);
 
-  ipcMain.handle('get-sites', () => SITES.map((s, i) => ({ name: s.name, index: i })));
-
   ipcMain.on('open-external', (event, url) => {
     if (typeof url === 'string' && /^https?:\/\//i.test(url)) shell.openExternal(url);
   });
-
-  ipcMain.on('win-minimize', () => mainWindow?.minimize());
-
-  ipcMain.on('win-maximize-toggle', () => {
-    if (!mainWindow) return;
-    if (mainWindow.isMaximized()) mainWindow.unmaximize(); else mainWindow.maximize();
-  });
-
-  ipcMain.on('win-close', () => mainWindow?.close());
-
-  ipcMain.on('win-reload', reloadPage);
-  ipcMain.on('win-devtools', toggleDevTools);
-  ipcMain.on('win-fullscreen', toggleFullScreen);
-  ipcMain.on('win-about', showAbout);
-  ipcMain.on('app-quit', () => app.quit());
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createMain();

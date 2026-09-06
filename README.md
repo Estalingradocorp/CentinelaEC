@@ -35,7 +35,7 @@ Características principales:
 
 ## Características
 
-- **Ventana dedicada** (1280×800, tamaño mínimo 800×600) **sin marco nativo (frameless)** con barra de título propia estilo **macOS**: botones de tráfico rojo/amarillo/verde (cerrar, minimizar, maximizar) arriba a la izquierda, botón **☰ Menú** con todas las opciones (Inicio, plataformas, recargar, DevTools, pantalla completa, sobre el programa, salir) y zona arrastrable.
+- **Ventana dedicada** (1280×800, tamaño mínimo 800×600) con **marco nativo de Windows** y menú clásico siempre visible (Centinela, Ver, Ayuda).
 - **Tema azul y negro** en toda la interfaz (pantalla de inicio y splash), con acentos `#2ea6ff` → `#00b4ff`.
 - **Pantalla de inicio**: al arrancar (y con **Inicio** del menú / Ctrl+H) se muestra un lanzador con tarjetas para elegir cada web, tagline descriptivo, reloj en vivo, estado de conexión de cada plataforma (online/offline) e **interruptor "Encriptar la Intra-Net"** (desactivado por defecto; al activarlo un **LED** pasa de rojo a verde y el indicador cambia a *SYS.ENCRYPTION ACTIVE*).
 - **Tarjetas con imágenes** propias para Palantir, EC NEWS y EC Terminal Data (las demás usan emojis).
@@ -97,7 +97,7 @@ lucher/
 | `main.js` | Proceso principal de Electron. Define las webs, construye el menú nativo, crea la ventana del splash y la principal, maneja la navegación segura y el IPC. |
 | `home.html` | Pantalla de inicio: tarjetas para elegir cada web, reloj, estado de conexión, interruptor de encriptación y tagline. |
 | `splash.html` | Pantalla de carga: logo, título, subtítulo y texto de conexión con animación CSS. |
-| `preload.js` | Puente seguro (`window.conflictRadar` y `window.centinela.{selectSite,getCurrent,openExternal,windowControls}`) entre el renderizador y el proceso principal. También inyecta la barra de título estilo macOS en cada página. |
+| `preload.js` | Puente seguro (`window.conflictRadar` y `window.centinela.{selectSite,getCurrent,openExternal}`) entre el renderizador y el proceso principal. |
 | `adblock.js` | Inicializa el bloqueo de anuncios (`@cliqz/adblocker`) con listas EasyList/EasyPrivacy y caché local. |
 | `package.json` | Define nombre, versión, scripts (`start`, `dist`), archivos empaquetados y configuración de electron-builder. |
 | `make-icon.js` | Genera `icon.png` a partir de una imagen (uso único). |
@@ -208,3 +208,4 @@ El instalador es un **programa de uso interno** que no está firmado digitalment
 - **Interruptor "Encriptar la Intra-Net"** junto al reloj.
 - **Imágenes personalizadas** en las tarjetas de Palantir, EC NEWS y EC Terminal Data.
 - **Ventana frameless estilo macOS** con botones de tráfico, botón ☰ Menú (recupera todas las opciones del menú nativo) y barra de título propia.
+- **Vuelta a la ventana nativa de Windows**: se elimina el marco frameless y la interfaz vuelve a la ventana estándar con su menú clásico (Centinela, Ver, Ayuda) siempre visible.

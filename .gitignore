@@ -3,6 +3,7 @@ node_modules/
 
 # Resultados de build / instaladores
 dist/
+dist-native/
 
 # Logs
 *.log
