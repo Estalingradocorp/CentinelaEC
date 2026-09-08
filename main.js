@@ -4,13 +4,14 @@ const { initAdblock } = require('./adblock');
 
 const SITES = [
   { name: 'Palantir Gotham',   url: 'https://www.palantir.com/platforms/gotham/', shortcut: 'CmdOrCtrl+1' },
-  { name: 'Conflict Radar 360', url: 'https://www.conflictradar360.com/',        shortcut: 'CmdOrCtrl+2' },
-  { name: 'World Monitor',      url: 'https://www.worldmonitor.app/dashboard?lat=20.0000&lon=0.0000&zoom=1.00&view=global&timeRange=7d&layers=conflicts%2Cbases%2Chotspots%2Cnuclear%2Csanctions%2Cweather%2CcanadaAlerts%2Ceconomic%2Cwaterways%2Coutages%2Cmilitary%2Cnatural', shortcut: 'CmdOrCtrl+3' },
-  { name: 'EC NEWS',            url: 'https://nicotips27.github.io/ECnews/',                      shortcut: 'CmdOrCtrl+4' },
-  { name: 'EC Terminal Data',  url: 'https://nicotips27.github.io/Estalingrado-corp-Terminal-data/', shortcut: 'CmdOrCtrl+5' },
-  { name: 'Radio Garden',      url: 'https://radio.garden/',                                   shortcut: 'CmdOrCtrl+6' },
-  { name: 'EC Send Pro',       url: 'https://estalingradocorp.github.io/ECsendpro/',            shortcut: 'CmdOrCtrl+7' },
-  { name: 'Famelack',          url: 'https://famelack.com/',                                    shortcut: 'CmdOrCtrl+8' }
+  { name: 'War Watch',         url: 'https://www.war-watch.com/',                  shortcut: 'CmdOrCtrl+2' },
+  { name: 'Conflict Radar 360', url: 'https://www.conflictradar360.com/',        shortcut: 'CmdOrCtrl+3' },
+  { name: 'World Monitor',      url: 'https://www.worldmonitor.app/dashboard?lat=20.0000&lon=0.0000&zoom=1.00&view=global&timeRange=7d&layers=conflicts%2Cbases%2Chotspots%2Cnuclear%2Csanctions%2Cweather%2CcanadaAlerts%2Ceconomic%2Cwaterways%2Coutages%2Cmilitary%2Cnatural', shortcut: 'CmdOrCtrl+4' },
+  { name: 'EC NEWS',            url: 'https://nicotips27.github.io/ECnews/',                      shortcut: 'CmdOrCtrl+5' },
+  { name: 'EC Terminal Data',  url: 'https://nicotips27.github.io/Estalingrado-corp-Terminal-data/', shortcut: 'CmdOrCtrl+6' },
+  { name: 'Radio Garden',      url: 'https://radio.garden/',                                   shortcut: 'CmdOrCtrl+7' },
+  { name: 'EC Send Pro',       url: 'https://estalingradocorp.github.io/ECsendpro/',            shortcut: 'CmdOrCtrl+8' },
+  { name: 'Famelack',          url: 'https://famelack.com/',                                    shortcut: 'CmdOrCtrl+9' }
 ];
 
 let currentSite = -1; // -1 = pantalla de inicio
@@ -75,7 +76,7 @@ function showAbout() {
     type: 'info',
     title: 'Centinela BETA',
     message: 'Centinela BETA v1.0.0 · Servicio Estalingrado Corp',
-    detail: 'Centro de inteligencia global. Monitoreá el mundo, analizá información y seguí acontecimientos en tiempo real desde una única plataforma.\n\nAtajos: Ctrl+1 (Palantir) | Ctrl+2 (Conflict Radar) | Ctrl+3 (World Monitor) | Ctrl+4 (EC News) | Ctrl+5 (EC Terminal Data) | Ctrl+6 (Radio Garden) | Ctrl+7 (EC Send Pro) | Ctrl+8 (Famelack)\n\nWeb: estalingradocorp.qzz.io',
+    detail: 'Centro de inteligencia global. Monitoreá el mundo, analizá información y seguí acontecimientos en tiempo real desde una única plataforma.\n\nAtajos: Ctrl+1 (Palantir) | Ctrl+2 (War Watch) | Ctrl+3 (Conflict Radar) | Ctrl+4 (World Monitor) | Ctrl+5 (EC News) | Ctrl+6 (EC Terminal Data) | Ctrl+7 (Radio Garden) | Ctrl+8 (EC Send Pro) | Ctrl+9 (Famelack)\n\nWeb: estalingradocorp.qzz.io',
     buttons: ['Cerrar', 'Visitar Estalingrado Corp'],
     cancelId: 0,
     defaultId: 0

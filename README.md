@@ -20,7 +20,7 @@ App de escritorio para Windows que abre **seis plataformas de monitoreo y datos*
 
 ## Descripción
 
-**Centinela BETA** es un *wrapper* de escritorio construido con [Electron](https://www.electronjs.org/). Su propósito es ofrecer acceso rápido y autónomo a **ocho plataformas** de monitoreo de inteligencia y datos.
+**Centinela BETA** es un *wrapper* de escritorio construido con [Electron](https://www.electronjs.org/). Su propósito es ofrecer acceso rápido y autónomo a **nueve plataformas** de monitoreo de inteligencia y datos.
 
 Características principales:
 
@@ -38,7 +38,7 @@ Características principales:
 - **Ventana dedicada** (1280×800, tamaño mínimo 800×600) con **marco nativo de Windows** y menú clásico siempre visible (Centinela, Ver, Ayuda).
 - **Tema azul y negro** en toda la interfaz (pantalla de inicio y splash), con acentos `#2ea6ff` → `#00b4ff`.
 - **Pantalla de inicio**: al arrancar (y con **Inicio** del menú / Ctrl+H) se muestra un lanzador con tarjetas para elegir cada web, tagline descriptivo, reloj en vivo, estado de conexión de cada plataforma (online/offline) e **interruptor "Encriptar la Intra-Net"** (desactivado por defecto; al activarlo un **LED** pasa de rojo a verde y el indicador cambia a *SYS.ENCRYPTION ACTIVE*).
-- **Tarjetas con imágenes** propias para Palantir, EC NEWS, EC Terminal Data y EC Send Pro (las demás usan emojis).
+- **Tarjetas con imágenes** propias para todas las plataformas (favicons/iconos oficiales de cada sitio).
 - **Opción "Sobre el programa"** en el menú **Ayuda** (F1): modal con la info de Centinela BETA, la descripción y un botón que abre la web de Estalingrado Corp (`estalingradocorp.qzz.io`).
 - **Menú nativo** con los módulos **Centinela**, **Ver** y **Ayuda**:
   - **Inicio** (Ctrl+H) y atajos **Ctrl+1 … Ctrl+8** para cambiar de web.
@@ -58,13 +58,14 @@ Características principales:
 | Atajo | Plataforma | URL |
 | --- | --- | --- |
 | Ctrl+1 | Palantir Gotham | https://www.palantir.com/platforms/gotham/ |
-| Ctrl+2 | Conflict Radar 360 | https://www.conflictradar360.com/ |
-| Ctrl+3 | World Monitor | https://www.worldmonitor.app/dashboard?… |
-| Ctrl+4 | EC NEWS | https://nicotips27.github.io/ECnews/ |
-| Ctrl+5 | EC Terminal Data | https://nicotips27.github.io/Estalingrado-corp-Terminal-data/ |
-| Ctrl+6 | Radio Garden | https://radio.garden/ |
-| Ctrl+7 | EC Send Pro | https://estalingradocorp.github.io/ECsendpro/ |
-| Ctrl+8 | Famelack | https://famelack.com/ |
+| Ctrl+2 | War Watch | https://www.war-watch.com/ |
+| Ctrl+3 | Conflict Radar 360 | https://www.conflictradar360.com/ |
+| Ctrl+4 | World Monitor | https://www.worldmonitor.app/dashboard?… |
+| Ctrl+5 | EC NEWS | https://nicotips27.github.io/ECnews/ |
+| Ctrl+6 | EC Terminal Data | https://nicotips27.github.io/Estalingrado-corp-Terminal-data/ |
+| Ctrl+7 | Radio Garden | https://radio.garden/ |
+| Ctrl+8 | EC Send Pro | https://estalingradocorp.github.io/ECsendpro/ |
+| Ctrl+9 | Famelack | https://famelack.com/ |
 
 > World Monitor abre su dashboard en vivo con una configuración concreta (zoom global, últimos 7 días y varias capas de datos).
 
@@ -85,6 +86,11 @@ lucher/
 ├── img-ecnews.jpg      # Imagen de la tarjeta EC NEWS
 ├── img-palantir.png    # Imagen de la tarjeta Palantir
 ├── img-ecsendpro.png   # Imagen de la tarjeta EC Send Pro
+├── img-warwatch.png    # Icono de la tarjeta War Watch
+├── img-conflictradar.png # Icono de la tarjeta Conflict Radar 360
+├── img-worldmonitor.png  # Icono de la tarjeta World Monitor
+├── img-radiogarden.png   # Icono de la tarjeta Radio Garden
+├── img-famelack.png      # Icono de la tarjeta Famelack
 ├── icon.png            # Icono de la app (derivado del logo)
 ├── make-icon.js        # Script que genera icon.png (uso único)
 ├── adblock.js          # Bloqueo de anuncios con caché local
@@ -212,3 +218,4 @@ El instalador es un **programa de uso interno** que no está firmado digitalment
 - **Imágenes personalizadas** en las tarjetas de Palantir, EC NEWS y EC Terminal Data.
 - Se añaden **EC Send Pro** y **Famelack** (Ctrl+7, Ctrl+8).
 - **Ventana nativa de Windows** con menú clásico siempre visible (Centinela, Ver, Ayuda).
+- Se añade **War Watch** junto a Palantir (Ctrl+2) y se mejoran los iconos de todas las plataformas con sus favicons oficiales.
